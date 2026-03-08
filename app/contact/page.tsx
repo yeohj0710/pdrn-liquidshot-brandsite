@@ -2,48 +2,38 @@ import type { Metadata } from "next";
 
 import { SectionShell } from "@/components/section-shell";
 import { companyInfo, contactChannels } from "@/lib/site-data";
-import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = createPageMetadata({
+export const metadata: Metadata = {
   title: "문의",
-  description: "PDRN 리퀴드샷 제품 및 주문 관련 문의처와 판매자 정보를 안내합니다.",
-  path: "/contact",
-});
+  description: "제품 및 주문 관련 문의처를 안내합니다.",
+};
 
 export default function ContactPage() {
   return (
     <>
-      <section className="mx-auto max-w-7xl px-6 py-12 sm:px-8 lg:px-10 lg:py-16">
-        <div className="grid gap-8 xl:grid-cols-[0.78fr_1.22fr]">
-          <article className="ink-panel p-8 sm:p-10">
-            <p className="eyebrow text-white/56">Contact</p>
-            <h1 className="hero-display mt-5 max-w-[10ch] break-keep text-white">제품과 주문 관련 문의를 안내해 드립니다</h1>
-            <p className="mt-6 max-w-xl break-keep text-sm leading-8 text-white/72">
-              고객센터, 이메일, 판매자 기본 정보를 한곳에서 확인하실 수 있도록 정리했습니다.
-            </p>
-          </article>
-
-          <div className="grid gap-5 lg:grid-cols-3">
-            {contactChannels.map((channel, index) => (
-              <article key={channel.title} className={index === 1 ? "story-slab" : "feature-card"}>
-                <p className="eyebrow">{channel.title}</p>
-                <h2 className="mt-4 break-all font-display text-[clamp(1.6rem,2vw,2.2rem)] leading-[1.18] tracking-[-0.04em] text-ink">
-                  {channel.value}
-                </h2>
-                <p className="mt-4 text-sm leading-8 text-muted">{channel.description}</p>
-              </article>
-            ))}
-          </div>
+      <SectionShell
+        eyebrow="Contact"
+        title="제품과 주문에 대해 궁금한 점이 있으신가요?"
+        description="고객센터, 이메일, 판매자 정보를 통해 문의하실 수 있습니다."
+      >
+        <div className="grid gap-5 lg:grid-cols-3">
+          {contactChannels.map((channel) => (
+            <article key={channel.title} className="feature-card">
+              <p className="eyebrow">{channel.title}</p>
+              <h2 className="mt-4 break-all text-2xl font-semibold text-ink">{channel.value}</h2>
+              <p className="mt-4 text-sm leading-7 text-muted">{channel.description}</p>
+            </article>
+          ))}
         </div>
-      </section>
+      </SectionShell>
 
       <SectionShell
-        eyebrow="Seller information"
+        eyebrow="Seller Info"
         title="판매자 정보"
-        description="주문 전 확인하실 수 있도록 판매자 기본 정보를 다시 안내합니다."
+        description="사이트 하단에도 동일한 판매자 정보가 표기되어 있습니다."
       >
-        <div className="glass-panel p-8 sm:p-10">
-          <div className="grid gap-4 text-sm leading-8 text-muted sm:grid-cols-2">
+        <div className="glass-panel p-8">
+          <div className="grid gap-4 text-sm leading-7 text-muted sm:grid-cols-2">
             <p>
               상호명 <span className="font-semibold text-ink">{companyInfo.legalName}</span>
             </p>

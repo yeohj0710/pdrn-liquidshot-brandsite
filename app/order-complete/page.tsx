@@ -2,14 +2,11 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import { PaymentStatus } from "@/components/order/payment-status";
-import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "주문 완료",
-  description: "주문 완료 상태를 확인하는 페이지입니다.",
-  path: "/order-complete",
-  noIndex: true,
-});
+export const metadata: Metadata = {
+  title: "Order Complete",
+  description: "결제 완료 또는 검증 상태를 확인합니다.",
+};
 
 export default function OrderCompletePage() {
   return (

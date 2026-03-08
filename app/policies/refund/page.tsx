@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = createPageMetadata({
+export const metadata: Metadata = {
   title: "취소·환불정책",
-  description: "K-PharmRx 공식 스토어 취소 및 환불정책입니다.",
-  path: "/policies/refund",
-});
+};
 
 export default function RefundPage() {
   return (
