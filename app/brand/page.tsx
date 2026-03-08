@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { EditorialPhoto } from "@/components/editorial-photo";
 import { ProductVisual } from "@/components/product-visual";
 import { SectionShell } from "@/components/section-shell";
-import { brandPrinciples, companyInfo, editorialGallery, routineChecklist, storyHighlights } from "@/lib/site-data";
+import { brandPrinciples, companyInfo, editorialGallery, routineChecklist, storyHighlights, supportingPhotos } from "@/lib/site-data";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -91,16 +92,38 @@ export default function BrandPage() {
           </article>
 
           <div className="grid gap-5 sm:grid-cols-2">
-            {editorialGallery.slice(1, 5).map((item, index) => (
-              <article key={item.title} className={index === 2 ? "story-slab p-0" : "outline-card p-0"}>
-                <ProductVisual variant={item.variant} className="min-h-[220px] rounded-b-none" />
-                <div className="p-6">
-                  <p className="eyebrow">패키지 컷</p>
-                  <h2 className="card-title mt-3">{item.title}</h2>
-                  <p className="card-copy mt-4">{item.body}</p>
-                </div>
-              </article>
-            ))}
+            <EditorialPhoto
+              src={supportingPhotos[0].imagePath}
+              alt={supportingPhotos[0].title}
+              eyebrow="Brand mood"
+              title={supportingPhotos[0].title}
+              body={supportingPhotos[0].body}
+              className="min-h-[260px]"
+            />
+            <article className="outline-card p-0">
+              <ProductVisual variant={editorialGallery[1].variant} className="min-h-[220px] rounded-b-none" />
+              <div className="p-6">
+                <p className="eyebrow">패키지 컷</p>
+                <h2 className="card-title mt-3">{editorialGallery[1].title}</h2>
+                <p className="card-copy mt-4">{editorialGallery[1].body}</p>
+              </div>
+            </article>
+            <EditorialPhoto
+              src={supportingPhotos[2].imagePath}
+              alt={supportingPhotos[2].title}
+              eyebrow="Desk scene"
+              title={supportingPhotos[2].title}
+              body={supportingPhotos[2].body}
+              className="min-h-[260px]"
+            />
+            <article className="story-slab p-0">
+              <ProductVisual variant={editorialGallery[4].variant} className="min-h-[220px] rounded-b-none" />
+              <div className="p-6">
+                <p className="eyebrow">패키지 컷</p>
+                <h2 className="card-title mt-3">{editorialGallery[4].title}</h2>
+                <p className="card-copy mt-4">{editorialGallery[4].body}</p>
+              </div>
+            </article>
           </div>
         </div>
       </SectionShell>

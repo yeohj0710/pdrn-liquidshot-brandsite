@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { EditorialPhoto } from "@/components/editorial-photo";
 import { ProductVisual } from "@/components/product-visual";
 import { Reveal } from "@/components/reveal";
 import { SectionShell } from "@/components/section-shell";
@@ -22,6 +23,7 @@ import {
   sampleReviews,
   signaturePoints,
   storyHighlights,
+  supportingPhotos,
 } from "@/lib/site-data";
 import { createPageMetadata, getWebsiteStructuredData } from "@/lib/seo";
 
@@ -55,11 +57,11 @@ export default function Home() {
         }}
       />
 
-      <section className="mx-auto grid min-h-[calc(100vh-120px)] max-w-7xl gap-10 px-6 py-14 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:px-10 lg:py-20">
+      <section className="mx-auto grid min-h-[calc(100vh-120px)] max-w-7xl gap-10 px-6 py-14 sm:px-8 lg:px-10 xl:grid-cols-[0.92fr_1.08fr] xl:py-18">
         <Reveal className="flex flex-col justify-center">
           <p className="eyebrow">{productData.heroEyebrow}</p>
-          <h1 className="section-title mt-4 max-w-4xl">{productData.heroTitle}</h1>
-          <p className="mt-6 max-w-2xl break-keep text-lg leading-8 text-muted">
+          <h1 className="section-title mt-4 max-w-3xl text-[clamp(2.15rem,3.5vw,4rem)]">{productData.heroTitle}</h1>
+          <p className="mt-6 max-w-2xl break-keep text-[1.04rem] leading-8 text-muted">
             {productData.heroDescription}
           </p>
 
@@ -77,9 +79,9 @@ export default function Home() {
 
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {heroStats.map((item, index) => (
-              <article key={item.label} className={index === 1 ? "feature-card" : "story-slab p-6"}>
+              <article key={item.label} className={index === 1 ? "feature-card !p-5" : "story-slab !p-5"}>
                 <p className="text-sm tracking-[0.2em] text-muted">{item.label}</p>
-                <p className="mt-3 break-keep text-[clamp(1.55rem,2.2vw,2.2rem)] font-semibold text-ink">
+                <p className="mt-3 break-keep text-[clamp(1.28rem,1.9vw,1.75rem)] font-semibold text-ink">
                   {item.value}
                 </p>
               </article>
@@ -88,8 +90,8 @@ export default function Home() {
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {editorialCards.map((card, index) => (
-              <article key={card.title} className={index === 1 ? "outline-card" : "feature-card"}>
-                <p className="text-sm tracking-[0.2em] text-[#8b125c]">{card.title}</p>
+              <article key={card.title} className={index === 1 ? "outline-card !p-5" : "feature-card !p-5"}>
+                <p className="text-xs tracking-[0.24em] text-[#8b125c]">{card.title}</p>
                 <p className="card-copy mt-4">{card.copy}</p>
               </article>
             ))}
@@ -100,35 +102,55 @@ export default function Home() {
           <div className="absolute left-4 top-12 h-48 w-48 rounded-full bg-[#ffd8eb] blur-3xl" />
           <div className="absolute bottom-10 right-4 h-56 w-56 rounded-full bg-[#eadcca] blur-3xl" />
           <div className="glass-panel relative w-full overflow-hidden p-5 sm:p-7">
-            <div className="grid gap-5 lg:grid-cols-[1.02fr_0.98fr]">
-              <ProductVisual variant="hero" className="min-h-[340px] lg:min-h-[460px]" />
-
+            <div className="grid gap-4 xl:grid-cols-[1.08fr_0.92fr]">
               <div className="grid gap-4">
-                <article className="story-slab">
-                  <p className="eyebrow">제품 한눈에 보기</p>
-                  <h2 className="card-title mt-3">박스와 스틱이 함께 보이는 정돈된 첫인상</h2>
-                  <p className="card-copy mt-4">{productData.purchaseNote}</p>
+                <ProductVisual variant="hero" className="min-h-[360px] sm:min-h-[460px] lg:min-h-[540px]" />
+                <div className="grid gap-4 md:grid-cols-[1.08fr_0.92fr]">
+                  <article className="story-slab !p-6">
+                    <p className="eyebrow">제품 한눈에 보기</p>
+                    <h2 className="card-title mt-3">박스와 스틱이 함께 보여 제품 성격이 빠르게 읽힙니다</h2>
+                    <p className="card-copy mt-4">{productData.purchaseNote}</p>
+                  </article>
+                  <EditorialPhoto
+                    src={supportingPhotos[1].imagePath}
+                    alt={supportingPhotos[1].title}
+                    eyebrow="Daily scene"
+                    title={supportingPhotos[1].title}
+                    body={supportingPhotos[1].body}
+                    className="min-h-[220px]"
+                  />
+                </div>
+              </div>
+
+              <div className="grid gap-4 content-start">
+                <article className="ink-panel p-6">
+                  <p className="eyebrow text-white/60">시그니처 포인트</p>
+                  <h2 className="card-title mt-3 text-white">핵심 배합과 액상 스틱 포맷을 첫 화면에서 바로 보여주는 구성</h2>
+                  <p className="mt-4 text-sm leading-7 text-white/78">
+                    큰 제품 컷과 기본 정보 카드를 한 화면 안에 묶어 처음 들어와도 무엇을 파는 사이트인지
+                    곧바로 이해되도록 정리했습니다.
+                  </p>
                 </article>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   {packageDetails.map((item, index) => (
-                    <article key={item.title} className={index === 0 ? "feature-card" : "outline-card"}>
-                      <p className="text-sm tracking-[0.18em] text-muted">{item.title}</p>
-                      <p className="mt-3 break-keep text-xl font-semibold text-ink">{item.value}</p>
+                    <article key={item.title} className={index === 0 || index === 3 ? "feature-card !p-5" : "outline-card !p-5"}>
+                      <p className="text-xs tracking-[0.24em] text-muted">{item.title}</p>
+                      <p className="mt-3 break-keep text-[clamp(1.15rem,1.6vw,1.45rem)] font-semibold leading-7 text-ink">
+                        {item.value}
+                      </p>
                     </article>
                   ))}
                 </div>
 
-                <div className="grid gap-4 sm:grid-cols-[0.92fr_1.08fr]">
-                  <article className="ink-panel p-6">
-                    <p className="eyebrow text-white/60">시그니처 포인트</p>
-                    <h2 className="card-title mt-3 text-white">PDRN 중심 배합과 액상 스틱 포맷</h2>
-                    <p className="mt-4 text-sm leading-7 text-white/78">
-                      핵심 배합과 1회분 구성을 함께 담아 제품 성격이 빠르게 읽히도록 정리했습니다.
-                    </p>
-                  </article>
-                  <ProductVisual variant="spotlight" className="min-h-[250px]" />
-                </div>
+                <EditorialPhoto
+                  src={supportingPhotos[0].imagePath}
+                  alt={supportingPhotos[0].title}
+                  eyebrow="Pharmacy mood"
+                  title={supportingPhotos[0].title}
+                  body={supportingPhotos[0].body}
+                  className="min-h-[260px]"
+                />
               </div>
             </div>
           </div>
@@ -166,7 +188,14 @@ export default function Home() {
                 <h3 className="card-title mt-3">{storyHighlights[1].title}</h3>
                 <p className="card-copy mt-4">{storyHighlights[1].body}</p>
               </article>
-              <ProductVisual variant="focus" className="min-h-[220px]" />
+              <EditorialPhoto
+                src={supportingPhotos[2].imagePath}
+                alt={supportingPhotos[2].title}
+                eyebrow="Routine mood"
+                title={supportingPhotos[2].title}
+                body={supportingPhotos[2].body}
+                className="min-h-[220px]"
+              />
             </div>
           </div>
         </div>
@@ -318,16 +347,38 @@ export default function Home() {
           </article>
 
           <div className="grid gap-5 sm:grid-cols-2">
-            {editorialGallery.slice(1).map((item, index) => (
-              <article key={item.title} className={index === 2 ? "feature-card p-0" : "outline-card p-0"}>
-                <ProductVisual variant={item.variant} className="min-h-[220px] rounded-b-none" />
-                <div className="p-6">
-                  <p className="eyebrow">패키지 컷</p>
-                  <h3 className="card-title mt-3">{item.title}</h3>
-                  <p className="card-copy mt-4">{item.body}</p>
-                </div>
-              </article>
-            ))}
+            <EditorialPhoto
+              src={supportingPhotos[2].imagePath}
+              alt={supportingPhotos[2].title}
+              eyebrow="Desk mood"
+              title={supportingPhotos[2].title}
+              body={supportingPhotos[2].body}
+              className="min-h-[280px]"
+            />
+            <article className="outline-card p-0">
+              <ProductVisual variant={editorialGallery[2].variant} className="min-h-[220px] rounded-b-none" />
+              <div className="p-6">
+                <p className="eyebrow">패키지 컷</p>
+                <h3 className="card-title mt-3">{editorialGallery[2].title}</h3>
+                <p className="card-copy mt-4">{editorialGallery[2].body}</p>
+              </div>
+            </article>
+            <article className="feature-card p-0">
+              <ProductVisual variant={editorialGallery[4].variant} className="min-h-[220px] rounded-b-none" />
+              <div className="p-6">
+                <p className="eyebrow">선물용 인상</p>
+                <h3 className="card-title mt-3">{editorialGallery[4].title}</h3>
+                <p className="card-copy mt-4">{editorialGallery[4].body}</p>
+              </div>
+            </article>
+            <article className="outline-card p-6">
+              <p className="eyebrow">패키지 메모</p>
+              <h3 className="card-title mt-3">실제 판매 페이지처럼 정보와 무드를 한 화면 안에서 함께 보여주는 구성</h3>
+              <p className="card-copy mt-4">
+                제품 실물 컷만 반복하지 않고 약국 선반, 물 한 잔, 데스크 장면을 함께 배치해 카테고리 감도를
+                보완했습니다. 동시에 중심은 항상 제품 패키지가 되도록 비중을 조절했습니다.
+              </p>
+            </article>
           </div>
         </div>
       </SectionShell>

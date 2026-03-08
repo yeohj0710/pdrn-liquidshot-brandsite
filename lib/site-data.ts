@@ -300,6 +300,24 @@ export const editorialGallery = [
   },
 ] as const;
 
+export const supportingPhotos = [
+  {
+    title: "약국 선반에서 떠오르는 신뢰감",
+    body: "한국 약국 무드의 깔끔한 진열감과 차분한 조명을 참고해 브랜드 톤을 정리했습니다.",
+    imagePath: "/images/editorial/pharmacy-shelf.jpg",
+  },
+  {
+    title: "물 한 잔과 함께 이어지는 데일리 루틴",
+    body: "액상 스틱 제품답게 아침과 외출 전, 책상 위에서 자연스럽게 연결되는 장면을 보완했습니다.",
+    imagePath: "/images/editorial/water-glass.jpg",
+  },
+  {
+    title: "가볍게 챙기는 이너뷰티 데스크 무드",
+    body: "영양제 제품군이 주는 카테고리 감도를 더해 제품이 놓이는 실제 맥락을 풍부하게 보여줍니다.",
+    imagePath: "/images/editorial/vitamin-table.jpg",
+  },
+] as const;
+
 export const sampleReviews = [
   {
     name: "mina.lee",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { EditorialPhoto } from "@/components/editorial-photo";
 import { ProductVisual } from "@/components/product-visual";
 import { SectionShell } from "@/components/section-shell";
 import {
@@ -11,6 +12,7 @@ import {
   routineScenes,
   sampleReviews,
   signaturePoints,
+  supportingPhotos,
 } from "@/lib/site-data";
 import { createPageMetadata, getProductStructuredData } from "@/lib/seo";
 
@@ -133,7 +135,14 @@ export default function ProductPage() {
               판매가 {formatKrw(productData.price)} / 구성 {productData.pack}
             </div>
             <div className="mt-6">
-              <ProductVisual variant="focus" className="min-h-[260px]" />
+              <EditorialPhoto
+                src={supportingPhotos[1].imagePath}
+                alt={supportingPhotos[1].title}
+                eyebrow="Daily scene"
+                title={supportingPhotos[1].title}
+                body={supportingPhotos[1].body}
+                className="min-h-[280px]"
+              />
             </div>
           </article>
         </div>
@@ -155,8 +164,16 @@ export default function ProductPage() {
           </article>
 
           <div className="grid gap-5 sm:grid-cols-2">
-            {editorialGallery.slice(3, 6).map((item, index) => (
-              <article key={item.title} className={index === 1 ? "story-slab p-0" : "outline-card p-0"}>
+            <EditorialPhoto
+              src={supportingPhotos[0].imagePath}
+              alt={supportingPhotos[0].title}
+              eyebrow="Pharmacy tone"
+              title={supportingPhotos[0].title}
+              body={supportingPhotos[0].body}
+              className="min-h-[260px]"
+            />
+            {editorialGallery.slice(4, 6).map((item, index) => (
+              <article key={item.title} className={index === 0 ? "story-slab p-0" : "outline-card p-0"}>
                 <ProductVisual variant={item.variant} className="min-h-[220px] rounded-b-none" />
                 <div className="p-6">
                   <p className="eyebrow">상세 컷</p>
@@ -165,6 +182,14 @@ export default function ProductPage() {
                 </div>
               </article>
             ))}
+            <EditorialPhoto
+              src={supportingPhotos[2].imagePath}
+              alt={supportingPhotos[2].title}
+              eyebrow="Desk mood"
+              title={supportingPhotos[2].title}
+              body={supportingPhotos[2].body}
+              className="min-h-[260px]"
+            />
           </div>
         </div>
       </SectionShell>
