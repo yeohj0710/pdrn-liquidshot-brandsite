@@ -21,7 +21,7 @@ export default function BrandPage() {
         description="한국 약국 기반의 신뢰감, 부드러운 프리미엄 컬러, 일상에 자연스럽게 스며드는 루틴을 브랜드의 중심에 두고 있습니다."
       >
         <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="glass-panel p-8">
+          <div className="story-slab">
             <p className="eyebrow">Our Mood</p>
             <h2 className="mt-3 text-3xl font-semibold text-ink">{companyInfo.brandDescription}</h2>
             <p className="mt-5 text-sm leading-7 text-muted">
@@ -43,8 +43,8 @@ export default function BrandPage() {
           </div>
 
           <div className="grid gap-4">
-            {storyHighlights.map((item) => (
-              <article key={item.title} className="feature-card">
+            {storyHighlights.map((item, index) => (
+              <article key={item.title} className={index === 1 ? "feature-card" : "outline-card"}>
                 <h3 className="text-2xl font-semibold text-ink">{item.title}</h3>
                 <p className="mt-4 text-sm leading-7 text-muted">{item.body}</p>
               </article>
@@ -58,24 +58,42 @@ export default function BrandPage() {
         title="부드러운 톤과 클린 무드로 채운 브랜드 비주얼"
         description="유리 질감, 라이트 베이지, 소프트 핑크, 깔끔한 피부 표현을 중심으로 브랜드가 지향하는 이미지를 정리했습니다."
       >
-        <div className="grid gap-5 lg:grid-cols-3">
-          {editorialGallery.map((item) => (
-            <article key={item.title} className="feature-card overflow-hidden p-0">
-              <div className="relative aspect-[4/5]">
-                <Image
-                  src={item.imagePath}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h2 className="text-2xl font-semibold text-ink">{item.title}</h2>
-                <p className="mt-4 text-sm leading-7 text-muted">{item.body}</p>
-              </div>
-            </article>
-          ))}
+        <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+          <article className="story-slab overflow-hidden p-0">
+            <div className="relative aspect-[16/10]">
+              <Image
+                src={editorialGallery[0].imagePath}
+                alt={editorialGallery[0].title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="p-8">
+              <h2 className="text-3xl font-semibold text-ink">{editorialGallery[0].title}</h2>
+              <p className="mt-4 text-sm leading-7 text-muted">{editorialGallery[0].body}</p>
+            </div>
+          </article>
+
+          <div className="grid gap-5 sm:grid-cols-2">
+            {editorialGallery.slice(1, 5).map((item, index) => (
+              <article key={item.title} className={index % 2 === 0 ? "feature-card overflow-hidden p-0" : "outline-card overflow-hidden p-0"}>
+                <div className="relative aspect-[4/5]">
+                  <Image
+                    src={item.imagePath}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 22vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h2 className="text-2xl font-semibold text-ink">{item.title}</h2>
+                  <p className="mt-4 text-sm leading-7 text-muted">{item.body}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </SectionShell>
 
@@ -85,11 +103,11 @@ export default function BrandPage() {
         description="제품 하나를 보여주더라도 어떤 무드와 기준 위에 있는지 분명하게 전달하는 것이 중요하다고 보고 있습니다."
       >
         <div className="grid gap-5 lg:grid-cols-3">
-          {brandPrinciples.map((principle) => (
-            <article key={principle.title} className="feature-card">
+          {brandPrinciples.map((principle, index) => (
+            <article key={principle.title} className={index === 1 ? "ink-panel p-8" : "story-slab"}>
               <p className="font-serif text-4xl italic text-[#8b125c]">{principle.accent}</p>
-              <h2 className="mt-4 text-2xl font-semibold text-ink">{principle.title}</h2>
-              <p className="mt-4 text-sm leading-7 text-muted">{principle.body}</p>
+              <h2 className={`mt-4 text-2xl font-semibold ${index === 1 ? "text-white" : "text-ink"}`}>{principle.title}</h2>
+              <p className={`mt-4 text-sm leading-7 ${index === 1 ? "text-white/75" : "text-muted"}`}>{principle.body}</p>
             </article>
           ))}
         </div>

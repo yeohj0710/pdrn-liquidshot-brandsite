@@ -89,6 +89,12 @@ export const storyHighlights = [
   },
 ] as const;
 
+export const brandStoryParagraphs = [
+  "PDRN 리퀴드샷은 한국 약국에서 만나는 제품처럼 깨끗하고 정리된 인상을 우선합니다. 제품을 처음 마주하는 순간에도 복잡하지 않고, 어떤 무드의 브랜드인지 한눈에 이해할 수 있도록 차분한 톤으로 정리했습니다.",
+  "부드러운 핑크와 크림 컬러, 여백이 살아 있는 레이아웃, 단정한 제품 정보 배치는 K-뷰티 특유의 세련된 감각을 담되 과장되지 않게 유지하기 위한 선택입니다. 일상 속 데스크, 파우치, 선물 상자 안 어디에 두어도 자연스럽게 어울리는 브랜드를 지향합니다.",
+  "무드만 예쁜 제품에 머무르지 않도록 주요 원료, 제품 구성, 문의처까지 한 흐름 안에서 분명하게 확인할 수 있게 정리했습니다. 브랜드를 오래 기억하게 하는 건 결국 첫인상과 사용 편의성이 함께 가는 경험이라고 보고 있습니다.",
+] as const;
+
 export const signaturePoints = [
   {
     label: "Signature Blend",
@@ -189,6 +195,52 @@ export const qualityPromises = [
   },
 ] as const;
 
+export const formulaStoryCards = [
+  {
+    title: "PDRN 파이토컴플렉스",
+    subtitle: "브랜드를 설명하는 첫 번째 키워드",
+    body: "제품을 떠올렸을 때 가장 먼저 기억되는 배합 포인트입니다. 더마 무드와 이너뷰티 루틴을 한 문장으로 정리해 주는 중심축 역할을 합니다.",
+  },
+  {
+    title: "저분자 피쉬콜라겐",
+    subtitle: "익숙한 이너뷰티 무드를 더하는 조합",
+    body: "데일리 이너뷰티 카테고리에서 익숙하게 찾는 대표 원료로, 제품의 방향을 더 선명하게 느끼게 해주는 조합입니다.",
+  },
+  {
+    title: "병풀추출분말",
+    subtitle: "차분한 더마 이미지를 완성하는 원료",
+    body: "클린하고 정돈된 브랜드 톤을 떠올리게 하는 조합으로, 전체 인상을 한층 차분하게 정리해 줍니다.",
+  },
+] as const;
+
+export const routineChecklist = [
+  {
+    title: "출근 전 3초 루틴",
+    body: "세면대 앞에서 오래 머물지 않아도 되는 간결한 루틴을 선호하는 분에게 잘 맞는 포맷입니다.",
+  },
+  {
+    title: "책상 서랍 속 한 박스",
+    body: "사무실에서도 과하게 튀지 않는 패키지라 눈에 띄지 않게 두고 필요할 때 꺼내기 좋습니다.",
+  },
+  {
+    title: "주말 여행 파우치",
+    body: "무거운 통 제품 대신 필요한 수량만 챙겨 짧은 일정에도 가볍게 가져가기 좋습니다.",
+  },
+  {
+    title: "선물용 셀프 케어 아이템",
+    body: "패키지 컬러와 박스 구성 덕분에 가벼운 감사 선물이나 뷰티 관심층 선물용으로도 잘 어울립니다.",
+  },
+] as const;
+
+export const imageMosaic = [
+  "/images/editorial/lab-glass.jpg",
+  "/images/editorial/cleanser-model.jpg",
+  "/images/editorial/leaf-flatlay.jpg",
+  "/images/editorial/serum-bottle.jpg",
+  "/images/editorial/skincare-lineup.jpg",
+  "/images/editorial/glass-dropper.jpg",
+] as const;
+
 export const packageDetails = [
   {
     title: "제품명",
@@ -224,6 +276,21 @@ export const editorialGallery = [
     body: "패키지 컬러와 잘 어울리는 라이트 톤의 비주얼로 선물 같은 인상을 더했습니다.",
     imagePath: "/images/editorial/leaf-flatlay.jpg",
   },
+  {
+    title: "드로퍼 세럼 모먼트",
+    body: "깨끗한 유리 질감과 손끝의 디테일이 어우러진 컷으로 클린 뷰티 감도를 더했습니다.",
+    imagePath: "/images/editorial/serum-bottle.jpg",
+  },
+  {
+    title: "클래식 세럼 라인업",
+    body: "밝은 배경 위에 놓인 에센셜 제품 컷으로 더마 카테고리 특유의 미니멀한 이미지를 담았습니다.",
+    imagePath: "/images/editorial/skincare-lineup.jpg",
+  },
+  {
+    title: "유리 드로퍼 스틸라이프",
+    body: "맑은 병과 드로퍼 실루엣이 보이는 무드 컷으로 원료 중심의 깨끗한 인상을 강조했습니다.",
+    imagePath: "/images/editorial/glass-dropper.jpg",
+  },
 ] as const;
 
 export const sampleReviews = [
@@ -244,6 +311,24 @@ export const sampleReviews = [
     tag: "30대 뷰티 관심층",
     title: "과하지 않은 패키지라 선물용으로도 괜찮아요",
     body: "핑크 톤이지만 가볍지 않고 단정한 느낌이라 친구한테 선물하기 좋겠다고 생각했어요. 주요 원료도 한눈에 보여서 보기 편했습니다.",
+  },
+  {
+    name: "yejin_park",
+    tag: "30대 마케터",
+    title: "사무실 서랍에 두고 챙기기 딱 좋은 느낌이에요",
+    body: "한 포씩 나뉘어 있어서 점심 먹고 난 뒤에도 편하게 챙기게 돼요. 전체 패키지가 정돈돼 있어서 데스크 위에 둬도 깔끔해 보여요.",
+  },
+  {
+    name: "sora.home",
+    tag: "20대 대학원생",
+    title: "여행 갈 때 챙기기 편해서 만족했어요",
+    body: "짧은 일정에 부피 큰 통 제품 들고 다니는 걸 싫어하는데 스틱 포맷이라 가볍고 좋아요. 루틴이 단순해져서 손이 자주 갑니다.",
+  },
+  {
+    name: "yuna.kim",
+    tag: "30대 셀프케어 관심층",
+    title: "첫인상이 차분해서 재구매 의사가 생겼어요",
+    body: "요즘 너무 자극적인 패키지가 많아서 오히려 이런 스타일이 더 눈에 들어왔어요. 주요 정보가 정리돼 있어서 보는 순간 편했습니다.",
   },
 ] as const;
 

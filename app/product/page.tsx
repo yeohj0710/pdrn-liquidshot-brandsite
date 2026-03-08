@@ -55,8 +55,8 @@ export default function ProductPage() {
               <p className="mt-6 text-sm leading-7 text-muted">{productData.heroDescription}</p>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {packageDetails.map((detail) => (
-                  <div key={detail.title} className="feature-card">
+                {packageDetails.map((detail, index) => (
+                  <div key={detail.title} className={index % 2 === 0 ? "story-slab p-6" : "outline-card"}>
                     <p className="text-sm uppercase tracking-[0.24em] text-muted">{detail.title}</p>
                     <p className="mt-3 text-2xl font-semibold text-ink">{detail.value}</p>
                   </div>
@@ -85,8 +85,8 @@ export default function ProductPage() {
         description="핵심 배합, 데일리 포맷, 패키지 인상, 선물하기 좋은 무드까지 제품을 대표하는 포인트를 담았습니다."
       >
         <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
-          {signaturePoints.map((point) => (
-            <article key={point.title} className="feature-card">
+          {signaturePoints.map((point, index) => (
+            <article key={point.title} className={index === 0 || index === 3 ? "story-slab" : "outline-card"}>
               <p className="eyebrow">{point.label}</p>
               <h2 className="mt-4 text-2xl font-semibold text-ink">{point.title}</h2>
               <p className="mt-4 text-sm leading-7 text-muted">{point.description}</p>
@@ -101,11 +101,11 @@ export default function ProductPage() {
         description="패키지 표기 기준 주요 원료와 구성 정보를 보기 좋게 정리했습니다."
       >
         <div className="grid gap-5 lg:grid-cols-3">
-          {productData.ingredients.map((ingredient) => (
-            <article key={ingredient.title} className="feature-card">
+          {productData.ingredients.map((ingredient, index) => (
+            <article key={ingredient.title} className={index === 1 ? "ink-panel p-8" : "story-slab"}>
               <p className="eyebrow">{ingredient.amount}</p>
-              <h2 className="mt-4 text-2xl font-semibold text-ink">{ingredient.title}</h2>
-              <p className="mt-4 text-sm leading-7 text-muted">{ingredient.description}</p>
+              <h2 className={`mt-4 text-2xl font-semibold ${index === 1 ? "text-white" : "text-ink"}`}>{ingredient.title}</h2>
+              <p className={`mt-4 text-sm leading-7 ${index === 1 ? "text-white/75" : "text-muted"}`}>{ingredient.description}</p>
             </article>
           ))}
         </div>
@@ -117,8 +117,8 @@ export default function ProductPage() {
         description="브랜드가 상상하는 사용 장면을 통해 제품의 포맷과 무드를 함께 전달합니다."
       >
         <div className="grid gap-5 lg:grid-cols-3">
-          {routineScenes.map((scene) => (
-            <article key={scene.step} className="feature-card">
+          {routineScenes.map((scene, index) => (
+            <article key={scene.step} className={index === 2 ? "story-slab" : "outline-card"}>
               <p className="font-serif text-4xl italic text-[#8b125c]">{scene.step}</p>
               <h2 className="mt-4 text-2xl font-semibold text-ink">{scene.title}</h2>
               <p className="mt-4 text-sm leading-7 text-muted">{scene.text}</p>
@@ -135,24 +135,42 @@ export default function ProductPage() {
         title="제품 무드를 채우는 비주얼"
         description="클린한 배경, 유리 질감, 라이트 톤의 에디토리얼 컷으로 제품의 결을 함께 보여줍니다."
       >
-        <div className="grid gap-5 lg:grid-cols-3">
-          {editorialGallery.map((item) => (
-            <article key={item.title} className="feature-card overflow-hidden p-0">
-              <div className="relative aspect-[4/5]">
-                <Image
-                  src={item.imagePath}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h2 className="text-2xl font-semibold text-ink">{item.title}</h2>
-                <p className="mt-4 text-sm leading-7 text-muted">{item.body}</p>
-              </div>
-            </article>
-          ))}
+        <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+          <article className="story-slab overflow-hidden p-0">
+            <div className="relative aspect-[16/10]">
+              <Image
+                src={editorialGallery[0].imagePath}
+                alt={editorialGallery[0].title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="p-8">
+              <h2 className="text-3xl font-semibold text-ink">{editorialGallery[0].title}</h2>
+              <p className="mt-4 text-sm leading-7 text-muted">{editorialGallery[0].body}</p>
+            </div>
+          </article>
+
+          <div className="grid gap-5 sm:grid-cols-2">
+            {editorialGallery.slice(1, 5).map((item, index) => (
+              <article key={item.title} className={index % 2 === 0 ? "feature-card overflow-hidden p-0" : "outline-card overflow-hidden p-0"}>
+                <div className="relative aspect-[4/5]">
+                  <Image
+                    src={item.imagePath}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 22vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h2 className="text-2xl font-semibold text-ink">{item.title}</h2>
+                  <p className="mt-4 text-sm leading-7 text-muted">{item.body}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </SectionShell>
 
@@ -162,8 +180,11 @@ export default function ProductPage() {
         description="휴대성, 패키지 무드, 선물하기 좋은 구성처럼 고객이 먼저 체감하는 반응을 중심으로 정리했습니다."
       >
         <div className="grid gap-5 lg:grid-cols-3">
-          {sampleReviews.map((review) => (
-            <article key={review.name} className="feature-card">
+          {sampleReviews.slice(0, 6).map((review, index) => (
+            <article
+              key={review.name}
+              className={`${index % 3 === 1 ? "story-slab" : "outline-card"} shadow-[0_16px_40px_rgba(74,52,64,0.08)]`}
+            >
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <p className="text-sm font-semibold text-ink">{review.name}</p>
