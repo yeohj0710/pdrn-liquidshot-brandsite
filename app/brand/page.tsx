@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
+import { ProductVisual } from "@/components/product-visual";
 import { SectionShell } from "@/components/section-shell";
-import { brandPrinciples, companyInfo, editorialGallery, storyHighlights } from "@/lib/site-data";
+import { brandPrinciples, companyInfo, editorialGallery, routineChecklist, storyHighlights } from "@/lib/site-data";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "브랜드",
-  description: "K-PharmRx의 브랜드 방향과 더마 이너뷰티 무드를 소개합니다.",
+  description: "K-PharmRx의 브랜드 방향과 PDRN 리퀴드샷이 지향하는 단정한 이너뷰티 무드를 소개합니다.",
   path: "/brand",
 });
 
@@ -16,18 +16,18 @@ export default function BrandPage() {
   return (
     <>
       <SectionShell
-        eyebrow="Brand"
-        title="K-PharmRx가 지향하는 단정한 더마 이너뷰티"
-        description="한국 약국 기반의 신뢰감, 부드러운 프리미엄 컬러, 일상에 자연스럽게 스며드는 루틴을 브랜드의 중심에 두고 있습니다."
+        eyebrow="브랜드 소개"
+        title="K-PharmRx가 지향하는 단정한 이너뷰티 감도"
+        description="과장된 표현보다 제품이 놓이는 장면, 패키지의 첫인상, 정보가 읽히는 방식으로 브랜드의 무드를 설명합니다."
       >
-        <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="story-slab">
-            <p className="eyebrow">Our Mood</p>
-            <h2 className="mt-3 text-3xl font-semibold text-ink">{companyInfo.brandDescription}</h2>
-            <p className="mt-5 text-sm leading-7 text-muted">
-              K-PharmRx는 화려한 장식보다 단정한 인상, 부드러운 컬러, 데일리 루틴에 어울리는 패키지
-              무드를 우선합니다. 제품을 처음 만나는 순간부터 차분하고 깨끗한 인상을 전하는 것이
-              브랜드의 핵심입니다.
+        <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+          <article className="story-slab">
+            <p className="eyebrow">브랜드 한 줄 소개</p>
+            <h1 className="section-title mt-4 max-w-3xl">{companyInfo.brandDescription}</h1>
+            <p className="mt-6 break-keep text-base leading-8 text-muted">
+              K-PharmRx는 화려한 장식보다 단정한 첫인상, 제품 정보가 빠르게 읽히는 전면 구성,
+              가볍게 챙기기 쉬운 루틴 포맷을 우선합니다. PDRN 리퀴드샷은 그 기준을 가장 먼저 보여주는
+              브랜드의 출발점입니다.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link href="/product" className="pill inline-flex">
@@ -40,73 +40,35 @@ export default function BrandPage() {
                 문의하기
               </Link>
             </div>
-          </div>
-
-          <div className="grid gap-4">
-            {storyHighlights.map((item, index) => (
-              <article key={item.title} className={index === 1 ? "feature-card" : "outline-card"}>
-                <h3 className="text-2xl font-semibold text-ink">{item.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-muted">{item.body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </SectionShell>
-
-      <SectionShell
-        eyebrow="Editorial Mood"
-        title="부드러운 톤과 클린 무드로 채운 브랜드 비주얼"
-        description="유리 질감, 라이트 베이지, 소프트 핑크, 깔끔한 피부 표현을 중심으로 브랜드가 지향하는 이미지를 정리했습니다."
-      >
-        <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-          <article className="story-slab overflow-hidden p-0">
-            <div className="relative aspect-[16/10]">
-              <Image
-                src={editorialGallery[0].imagePath}
-                alt={editorialGallery[0].title}
-                fill
-                sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="p-8">
-              <h2 className="text-3xl font-semibold text-ink">{editorialGallery[0].title}</h2>
-              <p className="mt-4 text-sm leading-7 text-muted">{editorialGallery[0].body}</p>
-            </div>
           </article>
 
-          <div className="grid gap-5 sm:grid-cols-2">
-            {editorialGallery.slice(1, 5).map((item, index) => (
-              <article key={item.title} className={index % 2 === 0 ? "feature-card overflow-hidden p-0" : "outline-card overflow-hidden p-0"}>
-                <div className="relative aspect-[4/5]">
-                  <Image
-                    src={item.imagePath}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 22vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h2 className="text-2xl font-semibold text-ink">{item.title}</h2>
-                  <p className="mt-4 text-sm leading-7 text-muted">{item.body}</p>
-                </div>
-              </article>
-            ))}
+          <div className="grid gap-4 sm:grid-cols-[1.04fr_0.96fr]">
+            <ProductVisual variant="soft" className="min-h-[340px] sm:min-h-[520px]" />
+            <div className="grid gap-4">
+              {storyHighlights.map((item, index) => (
+                <article key={item.title} className={index === 1 ? "feature-card" : "outline-card"}>
+                  <p className="eyebrow">브랜드 포인트</p>
+                  <h2 className="card-title mt-3">{item.title}</h2>
+                  <p className="card-copy mt-4">{item.body}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </SectionShell>
 
       <SectionShell
-        eyebrow="Principles"
+        eyebrow="브랜드 기준"
         title="브랜드를 구성하는 세 가지 기준"
-        description="제품 하나를 보여주더라도 어떤 무드와 기준 위에 있는지 분명하게 전달하는 것이 중요하다고 보고 있습니다."
+        description="패키지 무드, 정보가 읽히는 방식, 루틴 제품으로서의 사용성을 같은 톤 안에서 보여주는 것이 중요하다고 봅니다."
       >
         <div className="grid gap-5 lg:grid-cols-3">
           {brandPrinciples.map((principle, index) => (
             <article key={principle.title} className={index === 1 ? "ink-panel p-8" : "story-slab"}>
-              <p className="font-serif text-4xl italic text-[#8b125c]">{principle.accent}</p>
-              <h2 className={`mt-4 text-2xl font-semibold ${index === 1 ? "text-white" : "text-ink"}`}>{principle.title}</h2>
+              <p className={`text-sm tracking-[0.22em] ${index === 1 ? "text-white/55" : "text-[#8b125c]"}`}>
+                {principle.accent}
+              </p>
+              <h2 className={`mt-4 card-title ${index === 1 ? "text-white" : ""}`}>{principle.title}</h2>
               <p className={`mt-4 text-sm leading-7 ${index === 1 ? "text-white/75" : "text-muted"}`}>{principle.body}</p>
             </article>
           ))}
@@ -114,29 +76,47 @@ export default function BrandPage() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Tone & Mood"
-        title="부드럽지만 가볍지 않은 브랜드 톤"
-        description="오프화이트, 샴페인 베이지, 소프트 핑크, 버건디 포인트를 중심으로 차분한 더마 무드를 정리했습니다."
+        eyebrow="패키지 무드"
+        title="브랜드가 떠올리는 패키지 장면"
+        description="실제 제품 실물 컷을 서로 다른 무드로 전개해 브랜드가 지향하는 정서와 사용 장면을 보다 선명하게 보여드립니다."
       >
-        <div className="glass-panel p-8">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-[1.5rem] bg-[#f6f1ec] p-5">
-              <p className="text-sm text-muted">Canvas</p>
-              <p className="mt-2 text-xl font-semibold text-ink">Off White</p>
+        <div className="grid gap-5 lg:grid-cols-[1.04fr_0.96fr]">
+          <article className="feature-card p-0">
+            <ProductVisual variant={editorialGallery[0].variant} className="min-h-[380px] rounded-b-none sm:min-h-[500px]" />
+            <div className="p-7">
+              <p className="eyebrow">메인 컷</p>
+              <h2 className="card-title mt-3">{editorialGallery[0].title}</h2>
+              <p className="card-copy mt-4">{editorialGallery[0].body}</p>
             </div>
-            <div className="rounded-[1.5rem] bg-[#eadcca] p-5">
-              <p className="text-sm text-muted">Base</p>
-              <p className="mt-2 text-xl font-semibold text-ink">Champagne Beige</p>
-            </div>
-            <div className="rounded-[1.5rem] bg-[#f6d7e5] p-5">
-              <p className="text-sm text-muted">Accent</p>
-              <p className="mt-2 text-xl font-semibold text-ink">Soft Pink</p>
-            </div>
-            <div className="rounded-[1.5rem] bg-[#8b125c] p-5 text-white">
-              <p className="text-sm text-white/80">Signature</p>
-              <p className="mt-2 text-xl font-semibold">Burgundy Point</p>
-            </div>
+          </article>
+
+          <div className="grid gap-5 sm:grid-cols-2">
+            {editorialGallery.slice(1, 5).map((item, index) => (
+              <article key={item.title} className={index === 2 ? "story-slab p-0" : "outline-card p-0"}>
+                <ProductVisual variant={item.variant} className="min-h-[220px] rounded-b-none" />
+                <div className="p-6">
+                  <p className="eyebrow">패키지 컷</p>
+                  <h2 className="card-title mt-3">{item.title}</h2>
+                  <p className="card-copy mt-4">{item.body}</p>
+                </div>
+              </article>
+            ))}
           </div>
+        </div>
+      </SectionShell>
+
+      <SectionShell
+        eyebrow="브랜드 장면"
+        title="브랜드가 잘 어울리는 네 가지 순간"
+        description="제품을 실제로 꺼내는 장면이 자연스러워야 브랜드도 설득력을 갖는다고 보고, 대표적인 사용 장면을 정리했습니다."
+      >
+        <div className="grid gap-5 lg:grid-cols-4">
+          {routineChecklist.map((item, index) => (
+            <article key={item.title} className={index === 1 ? "feature-card" : "outline-card"}>
+              <h2 className="card-title">{item.title}</h2>
+              <p className="card-copy mt-4">{item.body}</p>
+            </article>
+          ))}
         </div>
       </SectionShell>
     </>

@@ -7,7 +7,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-white/50 bg-[rgba(248,244,240,0.88)] backdrop-blur-xl">
       <div className="border-b border-white/40 bg-[rgba(255,255,255,0.28)]">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-2 text-xs text-muted sm:px-8 lg:px-10">
-          <p>한국 약국 감도의 더마 이너뷰티 브랜드</p>
+          <p>한국 약국 감도의 이너뷰티 브랜드</p>
           <div className="flex flex-wrap items-center gap-4">
             <span>TEL {companyInfo.phone}</span>
             <span>{companyInfo.email}</span>
@@ -22,7 +22,7 @@ export function SiteHeader() {
           </div>
           <div>
             <p className="text-xs uppercase tracking-[0.32em] text-muted">K-PharmRx</p>
-            <p className="text-sm font-medium text-ink">PDRN Liquid Shot</p>
+            <p className="text-sm font-medium text-ink">PDRN 리퀴드샷</p>
           </div>
         </Link>
 

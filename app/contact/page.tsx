@@ -14,7 +14,7 @@ export default function ContactPage() {
   return (
     <>
       <SectionShell
-        eyebrow="Contact"
+        eyebrow="문의 안내"
         title="제품과 주문 관련 문의를 안내해 드립니다"
         description="고객센터, 이메일, 판매자 정보를 한곳에서 확인하실 수 있습니다."
       >
@@ -30,7 +30,7 @@ export default function ContactPage() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Seller Info"
+        eyebrow="판매자 정보"
         title="판매자 정보"
         description="주문 전 확인하실 수 있도록 판매자 기본 정보를 다시 안내합니다."
       >

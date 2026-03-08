@@ -22,7 +22,7 @@ export default function FaqPage() {
       />
 
       <SectionShell
-        eyebrow="FAQ"
+        eyebrow="자주 묻는 질문"
         title="자주 묻는 질문"
         description="제품 구성, 원료, 휴대성, 문의 방법 등 처음 확인하시는 분들이 자주 묻는 내용을 모았습니다."
       >
@@ -37,7 +37,7 @@ export default function FaqPage() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Need Help"
+        eyebrow="추가 안내"
         title="추가 안내가 필요하신가요?"
         description="FAQ에서 찾기 어려운 문의는 주문 페이지 또는 문의 페이지를 통해 이어서 확인하실 수 있습니다."
       >

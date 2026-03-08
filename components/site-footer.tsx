@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 sm:px-8 lg:grid-cols-[1.2fr_0.8fr_1fr] lg:px-10">
         <div className="space-y-4">
           <p className="eyebrow">K-PharmRx</p>
-          <h2 className="text-3xl font-semibold text-ink">PDRN Liquid Shot</h2>
+          <h2 className="text-3xl font-semibold text-ink">PDRN 리퀴드샷</h2>
           <p className="max-w-xl text-sm leading-7 text-muted">
             {companyInfo.brandDescription}와 함께, 매일 손이 가는 루틴과 부드러운 패키지 무드를
             전하는 K-PharmRx 공식 스토어입니다.
@@ -16,7 +16,7 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-muted">Site Map</p>
+          <p className="mb-4 text-sm font-semibold tracking-[0.24em] text-muted">사이트 맵</p>
           <ul className="space-y-3 text-sm text-muted">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -30,7 +30,7 @@ export function SiteFooter() {
 
         <div className="space-y-4 text-sm text-muted">
           <div>
-            <p className="mb-3 font-semibold uppercase tracking-[0.24em]">Company Info</p>
+            <p className="mb-3 font-semibold tracking-[0.24em]">판매자 정보</p>
             <p>상호명 {companyInfo.legalName}</p>
             <p>대표자 {companyInfo.representative}</p>
             <p>사업자등록번호 {companyInfo.businessNumber}</p>
