@@ -6,7 +6,8 @@ import "./globals.css";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { productData, siteUrl } from "@/lib/site-data";
+import { companyInfo, productData } from "@/lib/site-data";
+import { buildAbsoluteUrl, getOrganizationStructuredData, getSiteUrl } from "@/lib/seo";
 
 const sans = Noto_Sans_KR({
   subsets: ["latin"],
@@ -22,18 +23,58 @@ const serif = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: "K-PharmRx | PDRN Liquid Shot",
     template: "%s | K-PharmRx",
   },
   description:
-    "한국 약국 기반의 더마 이너뷰티 톤으로 설계한 PDRN Liquid Shot 브랜드 사이트입니다.",
+    "PDRN 리퀴드샷 공식 스토어입니다. 제품 정보, 원료 구성, 주문 안내를 한눈에 확인해 보세요.",
+  applicationName: companyInfo.brandName,
+  alternates: {
+    canonical: buildAbsoluteUrl("/"),
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: "K-PharmRx | PDRN Liquid Shot",
     description:
-      "한국 약국 기반의 신뢰감과 K-뷰티형 프리미엄 무드를 조합한 PDRN Liquid Shot 브랜드 사이트.",
-    images: [{ url: productData.imagePath, width: 1200, height: 1200 }],
+      "PDRN 리퀴드샷 공식 스토어. 제품 정보와 가격, 원료 구성을 한눈에 확인해 보세요.",
+    url: buildAbsoluteUrl("/"),
+    siteName: companyInfo.brandName,
+    locale: "ko_KR",
+    type: "website",
+    images: [
+      {
+        url: buildAbsoluteUrl(productData.imagePath),
+        width: 1200,
+        height: 1200,
+        alt: productData.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "K-PharmRx | PDRN Liquid Shot",
+    description: "PDRN 리퀴드샷 공식 스토어",
+    images: [buildAbsoluteUrl(productData.imagePath)],
+  },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
 };
 
@@ -48,6 +89,12 @@ export default function RootLayout({
         <div className="relative min-h-screen overflow-hidden">
           <div className="pointer-events-none absolute inset-0 bg-grid bg-[size:42px_42px] opacity-[0.15]" />
           <div className="relative z-10">
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify(getOrganizationStructuredData()),
+              }}
+            />
             <SiteHeader />
             <main>{children}</main>
             <SiteFooter />

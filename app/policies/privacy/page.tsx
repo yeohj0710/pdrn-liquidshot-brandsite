@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 
 import { companyInfo } from "@/lib/site-data";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "개인정보처리방침",
-};
+  description: "K-PharmRx 공식 스토어 개인정보처리방침입니다.",
+  path: "/policies/privacy",
+});
 
 export default function PrivacyPage() {
   return (

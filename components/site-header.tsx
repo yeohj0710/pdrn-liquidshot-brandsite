@@ -1,13 +1,23 @@
 import Link from "next/link";
 
-import { navLinks } from "@/lib/site-data";
+import { companyInfo, navLinks } from "@/lib/site-data";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/40 bg-[rgba(247,243,239,0.78)] backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/50 bg-[rgba(248,244,240,0.88)] backdrop-blur-xl">
+      <div className="border-b border-white/40 bg-[rgba(255,255,255,0.28)]">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-2 text-xs text-muted sm:px-8 lg:px-10">
+          <p>한국 약국 감도의 더마 이너뷰티 브랜드</p>
+          <div className="flex flex-wrap items-center gap-4">
+            <span>TEL {companyInfo.phone}</span>
+            <span>{companyInfo.email}</span>
+          </div>
+        </div>
+      </div>
+
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8 lg:px-10">
         <Link href="/" className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/60 bg-white/70 shadow-halo">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/60 bg-white/75 shadow-halo">
             <span className="font-serif text-lg font-semibold italic text-[#8b125c]">K</span>
           </div>
           <div>

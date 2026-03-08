@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 type SectionShellProps = {
+  id?: string;
   eyebrow?: string;
   title: string;
   description?: string;
@@ -9,6 +10,7 @@ type SectionShellProps = {
 };
 
 export function SectionShell({
+  id,
   eyebrow,
   title,
   description,
@@ -16,7 +18,7 @@ export function SectionShell({
   className = "",
 }: SectionShellProps) {
   return (
-    <section className={`mx-auto w-full max-w-7xl px-6 py-16 sm:px-8 lg:px-10 ${className}`}>
+    <section id={id} className={`mx-auto w-full max-w-7xl px-6 py-16 sm:px-8 lg:px-10 ${className}`}>
       <div className="mb-10 max-w-3xl">
         {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
         <h2 className="section-title mt-3">{title}</h2>

@@ -2,19 +2,21 @@ import type { Metadata } from "next";
 
 import { SectionShell } from "@/components/section-shell";
 import { companyInfo, contactChannels } from "@/lib/site-data";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "문의",
-  description: "제품 및 주문 관련 문의처를 안내합니다.",
-};
+  description: "PDRN 리퀴드샷 제품 및 주문 관련 문의처와 판매자 정보를 안내합니다.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
     <>
       <SectionShell
         eyebrow="Contact"
-        title="제품과 주문에 대해 궁금한 점이 있으신가요?"
-        description="고객센터, 이메일, 판매자 정보를 통해 문의하실 수 있습니다."
+        title="제품과 주문 관련 문의를 안내해 드립니다"
+        description="고객센터, 이메일, 판매자 정보를 한곳에서 확인하실 수 있습니다."
       >
         <div className="grid gap-5 lg:grid-cols-3">
           {contactChannels.map((channel) => (
@@ -30,7 +32,7 @@ export default function ContactPage() {
       <SectionShell
         eyebrow="Seller Info"
         title="판매자 정보"
-        description="사이트 하단에도 동일한 판매자 정보가 표기되어 있습니다."
+        description="주문 전 확인하실 수 있도록 판매자 기본 정보를 다시 안내합니다."
       >
         <div className="glass-panel p-8">
           <div className="grid gap-4 text-sm leading-7 text-muted sm:grid-cols-2">
