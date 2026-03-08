@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Cormorant_Garamond, Noto_Sans_KR } from "next/font/google";
+import { Cormorant_Garamond, Noto_Sans_KR, Noto_Serif_KR } from "next/font/google";
 
 import "./globals.css";
 
@@ -15,9 +15,15 @@ const sans = Noto_Sans_KR({
   weight: ["400", "500", "700"],
 });
 
-const serif = Cormorant_Garamond({
+const display = Noto_Serif_KR({
   subsets: ["latin"],
-  variable: "--font-serif",
+  variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
+});
+
+const accent = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-accent",
   weight: ["500", "600", "700"],
   style: ["normal", "italic"],
 });
@@ -85,20 +91,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${sans.variable} ${serif.variable} font-sans text-ink antialiased`}>
+      <body className={`${sans.variable} ${display.variable} ${accent.variable} font-sans text-ink antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getOrganizationStructuredData()),
+          }}
+        />
         <div className="relative min-h-screen overflow-hidden">
-          <div className="pointer-events-none absolute inset-0 bg-grid bg-[size:42px_42px] opacity-[0.15]" />
-          <div className="relative z-10">
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify(getOrganizationStructuredData()),
-              }}
-            />
-            <SiteHeader />
-            <main>{children}</main>
-            <SiteFooter />
-          </div>
+          <SiteHeader />
+          <main className="relative z-10">{children}</main>
+          <SiteFooter />
         </div>
       </body>
     </html>

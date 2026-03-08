@@ -33,37 +33,39 @@ export default function ProductPage() {
         }}
       />
 
-      <section className="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-10">
+      <section className="mx-auto max-w-7xl px-6 py-12 sm:px-8 lg:px-10 lg:py-16">
         <div className="glass-panel overflow-hidden p-6 sm:p-8 lg:p-10">
-          <div className="grid gap-8 lg:grid-cols-[0.96fr_1.04fr] lg:items-center">
-            <ProductVisual variant="hero" className="min-h-[380px] sm:min-h-[580px]" />
+          <div className="grid gap-8 xl:grid-cols-[0.98fr_1.02fr] xl:items-center">
+            <ProductVisual variant="hero" priority className="min-h-[420px] sm:min-h-[600px]" />
 
-            <div>
-              <p className="eyebrow">제품 소개</p>
-              <h1 className="section-title mt-4 max-w-3xl">{productData.name}</h1>
-              <p className="mt-4 break-keep text-lg leading-8 text-muted">
-                {productData.category} / {productData.pack}
-              </p>
-              <p className="mt-6 break-keep text-sm leading-8 text-muted">{productData.heroDescription}</p>
+            <div className="space-y-7">
+              <div>
+                <p className="eyebrow">Product detail</p>
+                <h1 className="hero-display mt-5 max-w-[10ch] break-keep">{productData.name}</h1>
+                <p className="mt-6 text-[1.08rem] leading-8 text-muted">
+                  {productData.category} / {productData.pack}
+                </p>
+                <p className="section-note mt-6 max-w-2xl">{productData.heroDescription}</p>
+              </div>
 
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2">
                 {packageDetails.map((detail, index) => (
                   <article key={detail.title} className={index === 0 || index === 3 ? "feature-card" : "outline-card"}>
-                    <p className="text-sm tracking-[0.18em] text-muted">{detail.title}</p>
-                    <p className="mt-3 break-keep text-[clamp(1.3rem,1.9vw,1.9rem)] font-semibold text-ink">
+                    <p className="text-[11px] uppercase tracking-[0.3em] text-muted">{detail.title}</p>
+                    <p className="mt-4 font-display text-[clamp(1.5rem,2vw,2.2rem)] leading-[1.14] tracking-[-0.04em] text-ink">
                       {detail.value}
                     </p>
                   </article>
                 ))}
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4">
                 <Link href="/order" className="pill inline-flex">
                   주문하기
                 </Link>
                 <Link
                   href="/faq"
-                  className="inline-flex items-center justify-center rounded-full border border-[#d8c5d0] bg-white/65 px-6 py-4 text-sm font-semibold text-ink transition hover:bg-white"
+                  className="inline-flex items-center justify-center rounded-full border border-[rgba(170,144,145,0.3)] bg-white/58 px-6 py-4 text-sm font-medium text-ink transition duration-200 hover:bg-white/78"
                 >
                   자주 묻는 질문
                 </Link>
@@ -74,114 +76,114 @@ export default function ProductPage() {
       </section>
 
       <SectionShell
-        eyebrow="제품 포인트"
-        title="제품을 이해하기 쉽게 정리한 네 가지 포인트"
-        description="핵심 배합, 데일리 포맷, 패키지 인상, 선물용 무드까지 처음 보는 분도 빠르게 이해할 수 있도록 정리했습니다."
+        eyebrow="Product points"
+        title="제품을 더 쉽게 이해하게 만드는 네 가지 포인트"
+        description="핵심 배합, 휴대성, 패키지 인상, 선물 무드까지 실제 제품을 볼 때 가장 먼저 읽히는 요소만 선별해 정리했습니다."
       >
         <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
           {signaturePoints.map((point, index) => (
-            <article key={point.title} className={index === 1 || index === 3 ? "story-slab" : "outline-card"}>
-              <p className="eyebrow">{point.label}</p>
-              <h2 className="card-title mt-4">{point.title}</h2>
-              <p className="card-copy mt-4">{point.description}</p>
+            <article key={point.title} className={index === 1 ? "ink-panel p-7" : index === 2 ? "feature-card" : "story-slab"}>
+              <p className={`text-[11px] uppercase tracking-[0.34em] ${index === 1 ? "text-white/54" : "text-[#8c1656]"}`}>
+                {point.label}
+              </p>
+              <h2 className={`card-title mt-4 ${index === 1 ? "text-white" : ""}`}>{point.title}</h2>
+              <p className={`mt-4 break-keep text-sm leading-8 ${index === 1 ? "text-white/74" : "text-muted"}`}>{point.description}</p>
             </article>
           ))}
         </div>
       </SectionShell>
 
       <SectionShell
-        eyebrow="핵심 배합"
-        title="한 포에 담긴 주요 원료"
-        description="패키지 표기 기준 주요 원료와 배합량을 한눈에 읽히도록 구성했습니다."
+        eyebrow="Ingredient story"
+        title="한 포에 담긴 주요 원료를 제품 무드와 함께 보여줍니다"
+        description="원료 정보는 숫자만으로 끝나지 않습니다. 이 제품이 어떤 결의 이너뷰티인지까지 읽히도록 배합량과 톤을 함께 보여주는 구성이 중요합니다."
       >
-        <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
-          <ProductVisual variant="dark" className="min-h-[340px] sm:min-h-[480px]" />
-          <div className="grid gap-5 lg:grid-cols-3">
-            {productData.ingredients.map((ingredient, index) => (
-              <article key={ingredient.title} className={index === 1 ? "ink-panel p-8" : "story-slab"}>
-                <p className={`eyebrow ${index === 1 ? "text-white/60" : ""}`}>{ingredient.amount}</p>
-                <h2 className={`mt-4 card-title ${index === 1 ? "text-white" : ""}`}>{ingredient.title}</h2>
-                <p className={`mt-4 text-sm leading-7 ${index === 1 ? "text-white/75" : "text-muted"}`}>{ingredient.description}</p>
-              </article>
-            ))}
+        <div className="grid gap-6 xl:grid-cols-[0.82fr_1.18fr]">
+          <EditorialPhoto
+            src={supportingPhotos[0].imagePath}
+            alt={supportingPhotos[0].title}
+            eyebrow="Pharmacy reference"
+            title={supportingPhotos[0].title}
+            body={supportingPhotos[0].body}
+            className="min-h-[540px]"
+          />
+          <div className="grid gap-4">
+            <article className="story-slab">
+              <p className="eyebrow">한 포 기준</p>
+              <h2 className="card-title mt-4">PDRN 3,000mg · 피쉬콜라겐 1,000mg · 병풀추출분말 200mg</h2>
+              <p className="card-copy mt-4">
+                제품 전면에 드러나는 핵심 배합을 그대로 가져와 제품 성격이 더 선명하게 읽히도록 정리했습니다.
+              </p>
+            </article>
+            <div className="grid gap-4 lg:grid-cols-3">
+              {productData.ingredients.map((ingredient, index) => (
+                <article key={ingredient.title} className={index === 1 ? "ink-panel p-7" : "outline-card"}>
+                  <p className={`eyebrow ${index === 1 ? "text-white/54" : ""}`}>{ingredient.amount}</p>
+                  <h2 className={`card-title mt-4 ${index === 1 ? "text-white" : ""}`}>{ingredient.title}</h2>
+                  <p className={`mt-4 break-keep text-sm leading-8 ${index === 1 ? "text-white/74" : "text-muted"}`}>{ingredient.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </SectionShell>
 
       <SectionShell
-        eyebrow="루틴 장면"
+        eyebrow="Routine scenes"
         title="일상에서 만나는 PDRN 리퀴드샷"
-        description="출근 준비 전, 사무실, 외출과 선물용까지 실제로 제품이 놓이는 장면을 중심으로 정리했습니다."
+        description="아침 준비, 사무실, 외출과 선물용까지 실제로 제품이 놓이는 장면을 기준으로 루틴 이미지를 더 풍부하게 정리했습니다."
       >
-        <div className="grid gap-5 lg:grid-cols-[1.02fr_0.98fr]">
+        <div className="grid gap-6 xl:grid-cols-[0.98fr_1.02fr]">
           <div className="grid gap-4 md:grid-cols-3">
             {routineScenes.map((scene, index) => (
-              <article key={scene.step} className={index === 1 ? "feature-card" : "outline-card"}>
-                <p className="font-serif text-4xl italic text-[#8b125c]">{scene.step}</p>
+              <article key={scene.step} className={index === 1 ? "story-slab" : "outline-card"}>
+                <p className="font-accent text-[3rem] italic leading-none text-[#8c1656]">{scene.step}</p>
                 <h2 className="card-title mt-4">{scene.title}</h2>
                 <p className="card-copy mt-4">{scene.text}</p>
               </article>
             ))}
           </div>
 
-          <article className="story-slab">
-            <p className="eyebrow">구성 안내</p>
-            <h2 className="card-title mt-3">한 박스 10포 구성, 액상 스틱 타입</h2>
-            <p className="card-copy mt-4">
-              부피가 큰 통 제품보다 필요한 수량만 가볍게 챙기기 쉬운 포맷으로 정리해, 데일리 루틴 제품처럼
-              부담 없이 이어가기 좋습니다.
-            </p>
-            <div className="section-grid-line mt-6 pt-6 text-sm leading-7 text-ink">
-              판매가 {formatKrw(productData.price)} / 구성 {productData.pack}
-            </div>
-            <div className="mt-6">
-              <EditorialPhoto
-                src={supportingPhotos[1].imagePath}
-                alt={supportingPhotos[1].title}
-                eyebrow="Daily scene"
-                title={supportingPhotos[1].title}
-                body={supportingPhotos[1].body}
-                className="min-h-[280px]"
-              />
-            </div>
-          </article>
+          <div className="grid gap-5">
+            <EditorialPhoto
+              src={supportingPhotos[1].imagePath}
+              alt={supportingPhotos[1].title}
+              eyebrow="Daily shot"
+              title={supportingPhotos[1].title}
+              body={supportingPhotos[1].body}
+              className="min-h-[360px]"
+            />
+            <article className="feature-card">
+              <p className="eyebrow">구성 안내</p>
+              <h2 className="card-title mt-4">한 박스 10포 구성, 액상 스틱 타입</h2>
+              <p className="card-copy mt-4">
+                부피가 큰 통 제품보다 필요한 수량만 가볍게 챙기기 쉬운 포맷으로 정리해, 데일리 루틴 제품처럼
+                부담 없이 이어가기 좋습니다.
+              </p>
+              <div className="section-grid-line mt-6 pt-6 text-sm leading-7 text-ink">
+                판매가 {formatKrw(productData.price)} / 구성 {productData.pack}
+              </div>
+            </article>
+          </div>
         </div>
       </SectionShell>
 
       <SectionShell
-        eyebrow="패키지 컷"
-        title="제품 무드를 풍부하게 보여주는 패키지 비주얼"
-        description="실제 제품 이미지를 기준으로 전면, 메인 패키지, 선물용 인상까지 서로 다른 결로 전개했습니다."
+        eyebrow="Package library"
+        title="제품 무드를 더 풍부하게 보여주는 패키지 비주얼"
+        description="실제 제품 이미지를 중심에 두고, 약국 무드와 데스크 장면을 보조적으로 섞어 브랜드의 밀도를 높였습니다."
       >
-        <div className="grid gap-5 lg:grid-cols-[1.02fr_0.98fr]">
+        <div className="grid gap-5 lg:grid-cols-[1.06fr_0.94fr]">
           <article className="feature-card p-0">
-            <ProductVisual variant={editorialGallery[0].variant} className="min-h-[360px] rounded-b-none sm:min-h-[500px]" />
-            <div className="p-7">
-              <p className="eyebrow">메인 패키지</p>
-              <h2 className="card-title mt-3">{editorialGallery[1].title}</h2>
+            <ProductVisual variant={editorialGallery[0].variant} className="min-h-[380px] rounded-b-none sm:min-h-[520px]" />
+            <div className="p-7 sm:p-8">
+              <p className="eyebrow">Main package</p>
+              <h2 className="card-title mt-4">{editorialGallery[1].title}</h2>
               <p className="card-copy mt-4">{editorialGallery[1].body}</p>
             </div>
           </article>
 
           <div className="grid gap-5 sm:grid-cols-2">
-            <EditorialPhoto
-              src={supportingPhotos[0].imagePath}
-              alt={supportingPhotos[0].title}
-              eyebrow="Pharmacy tone"
-              title={supportingPhotos[0].title}
-              body={supportingPhotos[0].body}
-              className="min-h-[260px]"
-            />
-            {editorialGallery.slice(4, 6).map((item, index) => (
-              <article key={item.title} className={index === 0 ? "story-slab p-0" : "outline-card p-0"}>
-                <ProductVisual variant={item.variant} className="min-h-[220px] rounded-b-none" />
-                <div className="p-6">
-                  <p className="eyebrow">상세 컷</p>
-                  <h2 className="card-title mt-3">{item.title}</h2>
-                  <p className="card-copy mt-4">{item.body}</p>
-                </div>
-              </article>
-            ))}
             <EditorialPhoto
               src={supportingPhotos[2].imagePath}
               alt={supportingPhotos[2].title}
@@ -190,32 +192,56 @@ export default function ProductPage() {
               body={supportingPhotos[2].body}
               className="min-h-[260px]"
             />
+            <article className="outline-card p-0">
+              <ProductVisual variant={editorialGallery[4].variant} className="min-h-[240px] rounded-b-none" />
+              <div className="p-6">
+                <p className="eyebrow">Gift edit</p>
+                <h2 className="card-title mt-4">{editorialGallery[4].title}</h2>
+                <p className="card-copy mt-4">{editorialGallery[4].body}</p>
+              </div>
+            </article>
+            <EditorialPhoto
+              src={supportingPhotos[0].imagePath}
+              alt={supportingPhotos[0].title}
+              eyebrow="Pharmacy tone"
+              title={supportingPhotos[0].title}
+              body={supportingPhotos[0].body}
+              className="min-h-[260px]"
+            />
+            <article className="story-slab p-0">
+              <ProductVisual variant={editorialGallery[5].variant} className="min-h-[240px] rounded-b-none" />
+              <div className="p-6">
+                <p className="eyebrow">Signature cut</p>
+                <h2 className="card-title mt-4">{editorialGallery[5].title}</h2>
+                <p className="card-copy mt-4">{editorialGallery[5].body}</p>
+              </div>
+            </article>
           </div>
         </div>
       </SectionShell>
 
       <SectionShell
-        eyebrow="리뷰"
+        eyebrow="Review notes"
         title="실제 구매 시 먼저 반응하는 포인트"
-        description="휴대성, 첫인상, 선물용 무드처럼 제품을 처음 접하는 분들이 주로 언급하는 포인트를 모았습니다."
+        description="휴대성, 첫인상, 선물용 무드처럼 제품을 처음 접하는 분들이 주로 언급하는 포인트를 장면 중심으로 묶었습니다."
       >
         <div className="grid gap-5 lg:grid-cols-3">
           {sampleReviews.slice(0, 6).map((review, index) => (
             <article
               key={review.name}
-              className={`${index % 3 === 1 ? "story-slab" : "outline-card"} shadow-[0_16px_40px_rgba(74,52,64,0.08)]`}
+              className={`${index === 1 || index === 4 ? "story-slab" : "outline-card"} ${index === 2 ? "feature-card" : ""}`}
             >
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <p className="text-sm font-semibold text-ink">{review.name}</p>
                   <p className="text-sm text-muted">{review.tag}</p>
                 </div>
-                <p className="text-sm font-semibold text-[#8b125c]">★★★★★</p>
+                <p className="text-sm font-semibold text-[#8c1656]">★★★★★</p>
               </div>
-              <h2 className="mt-5 break-keep text-[clamp(1.35rem,1.8vw,1.8rem)] font-semibold leading-8 text-ink">
+              <h2 className="mt-5 font-display text-[clamp(1.35rem,1.8vw,1.95rem)] leading-[1.22] tracking-[-0.04em] text-ink">
                 {review.title}
               </h2>
-              <p className="mt-4 break-keep text-sm leading-7 text-muted">{review.body}</p>
+              <p className="mt-4 break-keep text-sm leading-8 text-muted">{review.body}</p>
             </article>
           ))}
         </div>
